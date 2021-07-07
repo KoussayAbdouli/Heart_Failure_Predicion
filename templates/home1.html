@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Heart Failure Prediction</title>
+<link rel="stylesheet" type="text/css" href = "{% static 'css/main.css' %}"/>
+<head>
+    <h1>Heart Failure Predictions</h1>
+</head>
+<body>
+<form method="POST" action='{% url "result" %}'>
+    {% csrf_token %}
+    
+Age : <input type="number" min="0" max="100" required name="age"> <br><br>
+Anaemia :<input type="text" required name="anaemia"> <br><br>
+Creatinine Phosphokinase : <input type="text" required name="creatine_pho"> <br><br>
+Diabetes :<input type="text" required name="diabetes"> <br><br>
+Ejection Fraction : <input type="text" required name="ejec_fra"> <br><br>
+High Blood Pressure :<input type="text" required name="high_blood"> <br><br>
+Platelets :<input type="text" required name="platelets"> <br><br>
+Serum Creatinine :<input type="text" required name="serum_cre"> <br><br>
+Serum Soduim :<input type="text" required name="serum_sod"> <br><br>
+Sex :<input type="text" required name="sex"> <br><br>
+Smoking :<input type="text" required name="smoking"> <br><br>
+Time : <input type="text" required name="time"> <br><br>
+
+<input type="submit" name ="" value ="Predict">
+</form>
+
+</body>
+</html>

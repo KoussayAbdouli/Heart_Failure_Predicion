@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Heart Failure Prediction</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'website/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+</head>
+<body>
+
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="{% static 'website/images/signup-img.jpg' %}" alt="">
+                </div>
+                <div class="signup-form">
+                    <form method="POST" class="register-form" id="register-form" action='{% url "result" %}'>
+                        {% csrf_token %}
+                        <h2>Heart Failure Prediction</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name :</label>
+                                <input  type="text" name="name" id="name" required/>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="father_name">Surname :</label>
+                                <input type="text" name="surname" id="surname" required/>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="address">Age :</label>
+                            <input type="number" min="0" max="100" name="age" id="age" required/>
+                        </div>
+
+
+                        <div class="form-radio">
+                            <label for="sex" class="radio-label">Gender :</label>
+                            <div class="form-radio-item">
+                                <input type="radio" name="sex" id="male"value="1" >
+                                <label for="male">Male</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="sex" id="female" value="0">
+                                <label for="female">Female</label>
+                                <span class="check"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="smoking">Smoking :</label>
+                                <div class="form-select">
+                                    <select name="smoking" id="state">
+                                        <option value=""></option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="diabetes">Diabetes :</label>
+                                <div class="form-select">
+                                    <select name="diabetes" id="diabetes">
+                                        <option value=""></option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="high_blood_pressure">High Blood Pressure :</label>
+                                <div class="form-select">
+                                    <select name="high_blood" id="high_blood">
+                                        <option value=""></option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="city">Anaemia :</label>
+                                <div class="form-select">
+                                    <select name="anaemia" id="anaemia">
+                                        <option value=""></option>
+                                        <option value="" disabled selected>Decrease of red blood cells or hemoglobin</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="form-row">
+                            <div class="form-group">
+                                
+                                <label for="father_name">Platelets :</label>
+                                <input type="text" name="platelets" id="platelets" placeholder="Platelets in the blood (kiloplatelets/mL)" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="father_name">Ejection Fraction:</label>
+                                <input type="text" name="ejec_fra" id="ejec_fra"  placeholder = "Percentage of blood leaving the heart at each contraction (percentage)" required/>
+                            </div>
+                        </div>
+
+
+                      
+                        <div class="form-row">
+                            <div class="form-group">
+                                
+                                <label for="father_name">Creatinine Phosphokinase :</label>
+                                <input type="text" name="creatine_pho" id="creatine_pho" placeholder="Level of the CPK enzyme in the blood (mcg/L)" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="father_name">Serum Creatinine:</label>
+                                <input type="number"  step="any"  name="serum_cre" id="serum_cre"  placeholder = "Level of serum creatinine in the blood (mg/dL)"
+                                required/>
+                            </div>
+                        </div>
+
+
+                     
+                        <div class="form-row">
+                            <div class="form-group">
+                                
+                                <label for="father_name">Serum Seduim :</label>
+                                <input type="text" name="serum_sod" id="serum_sod" placeholder="Level of serum sodium in the blood (mEq/L)" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="father_name">Follow-up period (days):</label>
+                                <input type="text" name="time" id="time"  required/>
+                            </div>
+                        </div>
+
+        
+                        <div class="form-submit">
+                            <input type="submit" value="Reset All" class="submit" name="reset" id="reset" />
+                            <input type="submit" value="Submit Form" class="submit" name="submit" id="submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'website/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'website/js/main.js' %}"></script>
+</body>
+</html>

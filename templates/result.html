@@ -1,1 +1,227 @@
+<html>
+<title>Prediction Result</title>
+<body>
+   
 
+</body>
+</html>
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Result</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'website/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/style_table.css' %}">
+</head>
+
+
+<body>
+
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="{% static 'website/images/imh.jpg' %}" alt="">
+                </div>
+                    {% csrf_token %}
+                     <div class="limiter">
+                        <div class="container-table100">
+                            <h1 style="padding-bottom:20px">Heart Failure Prediction : Result</h1>
+                            <div class="wrap-table100">
+                                    <div class="table">
+                
+                                        <div class="row header">
+                                            <div class="cell">
+                                                Informations
+                                            </div>
+                                            <div class="cell">
+                                                Result
+                                            </div>
+                                            
+                                            
+                                        </div>
+                
+                                        <div class="row">
+                                            <div class="cell">
+                                               <strong>Name</strong> 
+                                            </div>
+                                            <div class="cell">
+                                                {{info_list.0}}
+                                            </div>
+                                            
+                                           
+                                        </div>
+                
+                                        <div class="row">
+                                            <div class="cell">
+                                                <strong>Surname</strong>
+                                            </div>
+                                            <div class="cell">
+                                                {{info_list.1}}
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                            <div class="cell">
+                                               <strong>Age</strong>
+                                            </div>
+                                            <div class="cell">
+                                                {{lis.0}}
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                            <div class="cell">
+                                              <strong> Gender</strong> 
+                                            </div>
+                                            <div class="cell">
+                                                {%if lis.9 == 1 %}Male{% endif %}
+                                                {%if lis.9 == 0 %}Female{% endif %}     </div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                            <div class="cell">
+                                               <strong>Smoking</strong> 
+                                            </div>
+                                            <div class="cell">
+                                                {%if lis.10 == 1 %}Yes{% endif %}
+                                                {%if lis.10 == 0 %}No{% endif %}
+                                            </div>
+                                           
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="cell">
+                                                <strong>Diabetes</strong> 
+                                            </div>
+                                            <div class="cell">
+                                                {%if lis.3 == 1 %}Yes{% endif %}
+                                                {%if lis.3 == 0 %}No{% endif %}</div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                            <div class="cell">
+                                                <strong>High Blood Pressure </strong>  
+                                            </div>
+                                            <div class="cell">
+                                                {%if lis.5 == 1 %}Yes{% endif %}
+                                                {%if lis.5 == 0 %}No{% endif %}
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                            <div class="cell">
+                                                <strong>Anaemia </strong> 
+                                            </div>
+                                            <div class="cell">
+                                                {%if lis.1 == 1 %}Yes{% endif %}
+                                                {%if lis.1 == 0 %}No{% endif %}
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                            <div class="cell">
+                                                <strong>Platelets </strong>
+                                            </div>
+                                            <div class="cell">
+                                                {{lis.6}}
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                            <div class="cell">
+                                                <strong>Ejection Fraction</strong> 
+                                            </div>
+                                            <div class="cell">
+                                                {{lis.4}}
+                                            </div>
+                                           
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="cell">
+                                                <strong>Creatinine Phosphokinase </strong> 
+                                            </div>
+                                            <div class="cell">
+                                                {{lis.2}}
+                                            </div>
+                                            
+                                        </div>
+                
+                                        <div class="row">
+                                            <div class="cell">
+                                                <strong>Serum Creatinine</strong>   
+                                            </div>
+                                            <div class="cell">
+                                                {{lis.7}}
+                                            </div>
+                                          
+                                        </div>
+                
+                                        <div class="row">
+                                            <div class="cell" >
+                                                <strong>Serum Seduim</strong> 
+                                            </div>
+                                            <div class="cell">
+                                                {{lis.8}}
+                                            </div>
+                                           
+                                        </div>
+                
+                                        <div class="row">
+                                            <div class="cell" >
+                                                <strong>Follow-up period (days)</strong> 
+                                            </div>
+                                            <div class="cell" >
+                                                {{lis.11}}
+                                            </div>
+                                            
+                                        </div>
+                
+                                        <div class="row">
+                                            <div class="cell" >
+                                                <strong>Result</strong>  
+                                            </div>
+                                            <div class="cell" >
+                                                {%if ans.0 == 1 %}<h3 style="color:rgb(255, 11, 11); font-size: 22px;">You can have a heart attack !</h3>{% endif %}
+                                                {%if ans.0 == 0 %}<h3 style="color:green; font-size: 22px;">You can't have a heart attack !</h3>{% endif %}
+                                            </div>
+                                            
+                                        </div>
+                
+                                        <div class="row">
+                                            <div class="cell" >
+                                                <strong>Prediction Probability</strong> 
+                                            </div>
+                                            <div class="cell">
+                                               
+                                                {%if ans.0 == 1 %} <h3 style="font-size: 22px">{% widthratio prob_pred.0.1 1 100 %}%</h3>{% endif %}
+                                                {%if ans.0 == 0 %} <h3 style="font-size: 22px">{% widthratio prob_pred.0.0 1 100 %}%</h3>{% endif %}
+                                            </div>
+                                           
+                                        </div>
+                
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'website/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'website/js/main.js' %}"></script>
+</body>
+</html>
